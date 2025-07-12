@@ -8,6 +8,8 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+const clock = new THREE.Clock(); // usado para medir o tempo (util na animação de rotação)
+
 // Câmera 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 50;
@@ -48,6 +50,10 @@ deathStarMtlLoader.load('materials.mtl', (materials) => {
     console.error('Erro ao carregar o MTL da Estrela da Morte', error);
 });
 
+// Pivôs para a rotação das naves, faz as naves ficarem girando ao redor da death star
+const chasePivot = new THREE.Object3D();
+scene.add(chasePivot);
+
 //Objeto 3: TieFighter
 let tieFighter;
 const tieFighterMtlLoader = new MTLLoader();
@@ -73,8 +79,8 @@ tieFighterMtlLoader.load(mtlFile, (materials) => {
         tieFighter.position.set(-20, 0, 0); // Distância do pivô
         tieFighter.rotation.y = 2* Math.PI; // Aponta para a frente
 
-        // Adiciona o TIE Fighter à cena
-        scene.add(tieFighter)
+        // Adiciona o TIE Fighter ao seu pivô para movimento orbital
+        chasePivot.add(tieFighter);
         
     }, undefined, (error) => {
         console.error('Erro ao carregar o OBJ do TIE Fighter', error);
@@ -84,8 +90,14 @@ tieFighterMtlLoader.load(mtlFile, (materials) => {
     console.error('Erro ao carregar o MTL do TIE Fighter', error);
 });
 
+// ========== LOOP DE ANIMAÇÃO ==========
 function animate() {
     requestAnimationFrame(animate);
+    const elapsedTime = clock.getElapsedTime();
+
+    // Movimento orbital das naves
+    chasePivot.rotation.y = elapsedTime * 0.9; // Velocidade da órbita
+    
     renderer.render(scene, camera);
 }
 
