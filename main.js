@@ -10,9 +10,21 @@ document.body.appendChild(renderer.domElement);
 
 const clock = new THREE.Clock(); // usado para medir o tempo (util na animação de rotação)
 
-// Câmera 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 50;
+// ========== CÂMERAS ==========
+
+// Câmera 1: Visão geral da cena
+const mainCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+mainCamera.position.set(-100, 80, 120);
+// Faz a câmera olhar para o centro da cena (coordenadas da origem)
+mainCamera.lookAt(0, 0, 0);
+
+
+// Câmera 2: Visão de cima
+const topDownCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+topDownCamera.position.set(20, 60, 0); 
+topDownCamera.lookAt(0, 0, 0);
+
+let activeCamera = mainCamera; // Inicia com a câmera de visão geral
 
 // ========== LUZES ==========
 // Luz ambiente para iluminar a cena toda de forma suave
@@ -117,6 +129,17 @@ xWingMtlLoader.load('materials.mtl', (materials) => {
     console.error('Erro ao carregar o MTL da X-Wing', error);
 });
 
+// Troca de câmera ao pressionar a tecla 'C'
+window.addEventListener('keydown', (event) => {
+    if (event.key.toLowerCase() === 'c') {
+        if (activeCamera === mainCamera) {
+            activeCamera = topDownCamera; // Troca para a câmera de cima
+        } else {
+            activeCamera = mainCamera; // Volta para a câmera principal
+        }
+    }
+});
+
 // ========== LOOP DE ANIMAÇÃO ==========
 function animate() {
     requestAnimationFrame(animate);
@@ -125,7 +148,7 @@ function animate() {
     // Movimento orbital das naves
     chasePivot.rotation.y = elapsedTime * 0.9; // Velocidade da órbita
     
-    renderer.render(scene, camera);
+    renderer.render(scene, activeCamera);
 }
 
 animate();
