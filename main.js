@@ -90,6 +90,33 @@ tieFighterMtlLoader.load(mtlFile, (materials) => {
     console.error('Erro ao carregar o MTL do TIE Fighter', error);
 });
 
+// Objeto 4: X-Wing
+const xWingMtlLoader = new MTLLoader();
+const xWingObjLoader = new OBJLoader();
+
+let xWing;
+
+xWingMtlLoader.setPath('./modelos/x-wing/');
+xWingMtlLoader.load('materials.mtl', (materials) => {
+    materials.preload();
+    xWingObjLoader.setMaterials(materials);
+    xWingObjLoader.setPath('./modelos/x-wing/');
+    xWingObjLoader.load('model.obj', (object) => {
+        xWing = object;
+
+        xWing.scale.set(2, 2, 2); 
+
+        xWing.position.set(-20, 0, -20);
+        xWing.rotation.y = Math.PI;
+        chasePivot.add(xWing);
+        
+    }, undefined, (error) => {
+        console.error('Erro ao carregar o OBJ da X-Wing', error);
+    });
+}, undefined, (error) => {
+    console.error('Erro ao carregar o MTL da X-Wing', error);
+});
+
 // ========== LOOP DE ANIMAÇÃO ==========
 function animate() {
     requestAnimationFrame(animate);
