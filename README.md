@@ -1,7 +1,7 @@
 # PP2 Processamento Gráfico | Cena Star Wars com Three.js
 
-Esse projeto consiste em uma cena 3D inspirada no universo de Star Wars, implementada usando a biblioteca Three.js. <br>
-Na cena, simulamos uma perseguição espacial em que um Caça TIE Fighter persegue uma nave X-Wing, enquanto ambas <br>
+Esse projeto consiste em uma cena 3D inspirada no universo de Star Wars, implementada usando a biblioteca Three.js.
+Na cena, simulamos uma perseguição espacial em que um Caça TIE Fighter persegue uma nave X-Wing, enquanto ambas
 orbitam a Estrela da Morte, que por sua vez, está apontando um "raio de destruição" no planeta Tatooine.
 
 ## Preview
