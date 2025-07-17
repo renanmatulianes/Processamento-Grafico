@@ -64,6 +64,7 @@ deathStarMtlLoader.load('materials.mtl', (materials) => {
 
 // --- Objeto 2: Planeta Tatooine com Shader Próprio ---
 let tatooine, tatooineMaterial;
+const tatooineTexture = textureLoader.load('./texturas/tatooine.jpg');
 Promise.all([
     fetch('shaders/tatooine.vert.glsl').then(res => res.text()),
     fetch('shaders/tatooine.frag.glsl').then(res => res.text())
@@ -71,7 +72,7 @@ Promise.all([
     tatooineMaterial = new THREE.RawShaderMaterial({
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
-        uniforms: { uTime: { value: 0.0 } }
+        uniforms: { uTime: { value: 0.0 }, uTexture: { value: tatooineTexture } }
     });
     const tatooineGeometry = new THREE.SphereGeometry(15, 64, 64);
     tatooine = new THREE.Mesh(tatooineGeometry, tatooineMaterial);
@@ -164,6 +165,11 @@ function animate() {
 
     // Movimento orbital das naves
     chasePivot.rotation.y = elapsedTime * 0.9; // Velocidade da órbita
+
+    // Atualiza o shader de Tatooine com o tempo
+    if (tatooineMaterial) {
+        tatooineMaterial.uniforms.uTime.value = elapsedTime;
+    }
     
     renderer.render(scene, activeCamera);
 }
