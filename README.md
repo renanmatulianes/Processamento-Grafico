@@ -2,10 +2,12 @@
 
 Esse projeto consiste em uma cena 3D inspirada no universo de Star Wars, implementada usando a biblioteca Three.js. <br>
 Na cena, simulamos uma perseguição espacial em que um Caça TIE Fighter persegue uma nave X-Wing, enquanto ambas <br>
+Esse projeto consiste em uma cena 3D inspirada no universo de Star Wars, implementada usando a biblioteca Three.js.
+Na cena, simulamos uma perseguição espacial em que um Caça TIE Fighter persegue uma nave X-Wing, enquanto ambas
 orbitam a Estrela da Morte, que por sua vez, está apontando um "raio de destruição" no planeta Tatooine.
 
 ## Preview
-![image](https://media.discordapp.net/attachments/1266150239870652461/1394013000922431580/cena.gif?ex=68754346&is=6873f1c6&hm=e1695539068aab355698fe2c9a9873a8f862cd336fa92d83cc68ff2a3974678a&=)
+![preview](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/cena%20preview.gif)
 
 ## Especificação de avaliação
 - [x] Visualização de pelo menos um objeto 3D por membro do grupo, redimensionando e posicionando cada objeto individualmente no ambiente virtual;
@@ -91,14 +93,14 @@ Duas câmeras fixas, alternadas pela tecla **C**:
 - `THREE.PerspectiveCamera()` posicionada para visão ampla, capturando todos os objetos da cena.
 - Foca no centro da cena com `camera.lookAt(0, 0, 0)`.
 
-![image](https://media.discordapp.net/attachments/1266150239870652461/1394014784919441509/2025-07-1314-54-36-ezgif.com-video-to-gif-converter.gif?ex=687544f0&is=6873f370&hm=e2859cb3fbb96181f47cca0c6ada099d6d5cf5361fa5e5d2f3afae39990a9d1b&=)
+![camera1](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/camera1preview.gif)
 
 ### Câmera Top-Down
 
 - `THREE.PerspectiveCamera()` posicionada acima da estrela da morte.
 - Visão de cima-baixo com `camera.lookAt(0, 0, 0)`.
 
-![image](https://media.discordapp.net/attachments/1266150239870652461/1394014840762138644/2025-07-1314-54-51-ezgif.com-video-to-gif-converter.gif?ex=687544fd&is=6873f37d&hm=d08d3da337c6d48c9fccfbb9155068b0f3ceb8775b9d8eabb0e10ff95e677de2&=)
+![camera2](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/camera2preview.gif)
 
 ---
 
