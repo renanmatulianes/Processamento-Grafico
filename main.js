@@ -62,6 +62,7 @@ deathStarMtlLoader.load('materials.mtl', (materials) => {
     console.error('Erro ao carregar o MTL da Estrela da Morte', error);
 });
 
+
 // --- Objeto 2: Planeta Tatooine com Shader Próprio ---
 let tatooine, tatooineMaterial;
 const tatooineTexture = textureLoader.load('./texturas/tatooine.jpg');
@@ -145,6 +146,16 @@ xWingMtlLoader.load('materials.mtl', (materials) => {
     });
 }, undefined, (error) => {
     console.error('Erro ao carregar o MTL da X-Wing', error);
+});
+
+// ========== Ajustar a cena conforme tamanho da tela ==========
+window.addEventListener('resize', () => {
+    // Atualiza o aspect ratio da câmera e o tamanho do renderer
+    mainCamera.aspect = window.innerWidth / window.innerHeight;
+    mainCamera.updateProjectionMatrix();
+    topDownCamera.aspect = window.innerWidth / window.innerHeight;
+    topDownCamera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 // Troca de câmera ao pressionar a tecla 'C'
