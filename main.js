@@ -62,6 +62,23 @@ deathStarMtlLoader.load('materials.mtl', (materials) => {
     console.error('Erro ao carregar o MTL da Estrela da Morte', error);
 });
 
+// --- Objeto 2: Planeta Tatooine com Shader Próprio ---
+let tatooine, tatooineMaterial;
+Promise.all([
+    fetch('shaders/tatooine.vert.glsl').then(res => res.text()),
+    fetch('shaders/tatooine.frag.glsl').then(res => res.text())
+]).then(([vertexShader, fragmentShader]) => {
+    tatooineMaterial = new THREE.RawShaderMaterial({
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        uniforms: { uTime: { value: 0.0 } }
+    });
+    const tatooineGeometry = new THREE.SphereGeometry(15, 64, 64);
+    tatooine = new THREE.Mesh(tatooineGeometry, tatooineMaterial);
+    tatooine.position.set(0, 0, 100);
+    scene.add(tatooine);
+});
+
 // Pivôs para a rotação das naves, faz as naves ficarem girando ao redor da death star
 const chasePivot = new THREE.Object3D();
 scene.add(chasePivot);
