@@ -5,7 +5,7 @@ Na cena, simulamos uma perseguição espacial em que um Caça TIE Fighter perseg
 orbitam a Estrela da Morte, que por sua vez, está apontando um "raio de destruição" no planeta Tatooine.
 
 ## Preview
-![image](/assets_readme/camera%201%20preview.gif)
+![preview](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/cena%20preview.gif)
 
 ## Especificação de avaliação
 - [x] Visualização de pelo menos um objeto 3D por membro do grupo, redimensionando e posicionando cada objeto individualmente no ambiente virtual;
@@ -91,14 +91,14 @@ Duas câmeras fixas, alternadas pela tecla **C**:
 - `THREE.PerspectiveCamera()` posicionada para visão ampla, capturando todos os objetos da cena.
 - Foca no centro da cena com `camera.lookAt(0, 0, 0)`.
 
-![image](/assets_readme/camera1preview.gif)
+![camera1](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/camera1preview.gif)
 
 ### Câmera Top-Down
 
 - `THREE.PerspectiveCamera()` posicionada acima da estrela da morte.
 - Visão de cima-baixo com `camera.lookAt(0, 0, 0)`.
 
-![image](/assets_readme/camera1preview.gif)
+![camera2](https://github.com/renanmatulianes/Processamento-Grafico/blob/main/assets_readme/camera2preview.gif)
 
 ---
 
